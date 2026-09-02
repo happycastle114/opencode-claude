@@ -328,6 +328,16 @@ async function main() {
   assert.ok(models.length >= 4);
   assert.ok(models.some((m) => m.id === "sonnet"));
   assert.ok(models.some((m) => m.id === "opus"));
+  assert.deepEqual(
+    models.find((m) => m.id === "claude-fable-5-1"),
+    {
+      id: "claude-fable-5-1",
+      name: "Fable 5.1",
+      reasoning: true,
+      contextWindow: 1_000_000,
+      maxTokens: 128_000,
+    },
+  );
   assert.equal(resolveClaudeModelId("haiku"), "claude-haiku-4-5");
   assert.equal(resolveClaudeModelId("sonnet"), "sonnet");
 
